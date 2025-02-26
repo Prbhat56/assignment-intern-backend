@@ -26,7 +26,6 @@ router.delete("/:username", verifyToken, async (req, res) => {
             return res.json({ message: `Admin deleted user ${targetUser.username}` });
         }
 
-      
         if (currentUser.role === "manager" && ["manager", "user"].includes(targetUser.role)) {
             await User.deleteOne({ username }); 
             return res.json({ message: `Manager deleted user ${targetUser.username}` });
